@@ -61,16 +61,28 @@
 
 	var style = {
 	    td: {
-	        padding: "1px 10px 1px 10px"
-	    },
-	    title: {
-	        fontSize: "2em"
-	    },
-	    sub: {
+	        padding: "10px 10px 1px 10px",
+	        align: "center",
+	        textAlign: "center",
+	        borderBottom: "1px solid #d9d9d9",
 	        fontSize: "18px"
 	    },
+	    title: {
+	        fontSize: "2em",
+	        textAlign: "center",
+	        fontWeight: "bold",
+	        padding: "20px 0 20px 0"
+	    },
+	    sub: {
+	        fontSize: "18px",
+	        padding: "20px 0 20px 0"
+	    },
 	    searchBar: {
-	        width: "100%"
+	        width: "1080px",
+	        padding: "0 0 10px 0"
+	    },
+	    table: {
+	        width: "1080px"
 	    }
 	}
 
@@ -128,19 +140,19 @@
 	            React.createElement("table", null, 
 	                React.createElement("thead", null, 
 	                    React.createElement("tr", null, 
-	                        React.createElement("th", null, "編號"), 
-	                        React.createElement("th", null, "縣市別"), 
-	                        React.createElement("th", null, "收治單位"), 
-	                        React.createElement("th", null, "檢傷編號"), 
-	                        React.createElement("th", null, "姓名"), 
-	                        React.createElement("th", null, "性別"), 
-	                        React.createElement("th", null, "國籍"), 
-	                        React.createElement("th", null, "年齡"), 
-	                        React.createElement("th", null, "醫療檢傷"), 
-	                        React.createElement("th", null, "救護檢傷"), 
-	                        React.createElement("th", null, "即時動向"), 
-	                        React.createElement("th", null, "轉診要求"), 
-	                        React.createElement("th", null, "刪除註記")
+	                        React.createElement("th", {style: style.td}, "編號"), 
+	                        React.createElement("th", {style: style.td}, "縣市別"), 
+	                        React.createElement("th", {style: style.td}, "收治單位"), 
+	                        React.createElement("th", {style: style.td}, "檢傷編號"), 
+	                        React.createElement("th", {style: style.td}, "姓名"), 
+	                        React.createElement("th", {style: style.td}, "性別"), 
+	                        React.createElement("th", {style: style.td}, "國籍"), 
+	                        React.createElement("th", {style: style.td}, "年齡"), 
+	                        React.createElement("th", {style: style.td}, "醫療檢傷"), 
+	                        React.createElement("th", {style: style.td}, "救護檢傷"), 
+	                        React.createElement("th", {style: style.td}, "即時動向"), 
+	                        React.createElement("th", {style: style.td}, "轉診要求"), 
+	                        React.createElement("th", {style: style.td}, "刪除註記")
 	                    )
 	                ), 
 	                React.createElement("tbody", null, rows)
@@ -189,11 +201,12 @@
 	            React.createElement("div", null, 
 	                React.createElement("div", {style: style.title}, "八仙氣爆案傷者送醫資料查詢"), 
 	                React.createElement("div", {style: style.sub}, "最後更新時間：2015/06/28 12:28，資料來源：北市府資訊局"), 
-	                React.createElement(SearchBar, {
+	                React.createElement("div", {className: "center"}, React.createElement(SearchBar, {
 	                    filterText: this.state.filterText, 
 	                    onUserInput: this.handleUserInput}
-	                ), 
+	                )), 
 	                React.createElement(ProductTable, {
+	                    style: style.table, 
 	                    products: this.props.products, 
 	                    filterText: this.state.filterText}
 	                )
