@@ -67,6 +67,14 @@
 	        borderBottom: "1px solid #d9d9d9",
 	        fontSize: "18px"
 	    },
+	    tdb: {
+	        width: "50px",
+	        padding: "10px 10px 1px 10px",
+	        align: "center",
+	        textAlign: "center",
+	        borderBottom: "1px solid #d9d9d9",
+	        fontSize: "18px"
+	    },
 	    title: {
 	        fontSize: "2em",
 	        textAlign: "center",
@@ -103,6 +111,22 @@
 	                React.createElement("td", {style: style.td}, this.props.product.oth3), 
 	                React.createElement("td", {style: style.td}, this.props.product.oth4), 
 	                React.createElement("td", {style: style.td}, this.props.product.oth5)
+	            )
+	        );
+	    }
+	});
+
+	var InfoRow = React.createClass({displayName: "InfoRow",
+	    render: function() {
+	        return (
+	            React.createElement("tr", null, 
+	                React.createElement("td", {style: style.td}, this.props.info.col1), 
+	                React.createElement("td", {style: style.td}, this.props.info.col2), 
+	                React.createElement("td", {style: style.td}, this.props.info.col3), 
+	                React.createElement("td", {style: style.td}, this.props.info.col4), 
+	                React.createElement("td", {style: style.td}, this.props.info.col5), 
+	                React.createElement("td", {style: style.td}, this.props.info.col6)
+	                
 	            )
 	        );
 	    }
@@ -161,6 +185,31 @@
 	    }
 	});
 
+	var ContactTable = React.createClass({displayName: "ContactTable",
+	    render: function() {
+	        var rows = [];
+	                
+	        this.props.info.forEach(function(info) {                       
+	            rows.push(React.createElement(InfoRow, {info: info, key: info.name}));
+	        }.bind(this));
+	        return (
+	            React.createElement("table", null, 
+	                React.createElement("thead", null, 
+	                    React.createElement("tr", null, 
+	                        React.createElement("th", {style: style.td}, "醫院"), 
+	                        React.createElement("th", {style: style.td}, "社福中心"), 
+	                        React.createElement("th", {style: style.td}, "辦公室電話"), 
+	                        React.createElement("th", {style: style.td}, "主任"), 
+	                        React.createElement("th", {style: style.td}, "主任手機"), 
+	                        React.createElement("th", {style: style.td}, "附註")
+	                    )
+	                ), 
+	                React.createElement("tbody", null, rows)
+	            )
+	        );
+	    }
+	});
+
 	var SearchBar = React.createClass({displayName: "SearchBar",
 	    handleChange: function() {
 	        this.props.onUserInput(
@@ -208,6 +257,12 @@
 	                React.createElement(ProductTable, {
 	                    style: style.table, 
 	                    products: this.props.products, 
+	                    filterText: this.state.filterText}
+	                ), 
+	                React.createElement("br", null), React.createElement("br", null), 
+	                React.createElement(ContactTable, {
+	                    style: style.table, 
+	                    info: this.props.info, 
 	                    filterText: this.state.filterText}
 	                )
 	            )
@@ -7959,8 +8014,106 @@
 	    }
 	];
 
-	React.render(React.createElement(FilterableProductTable, {products: Member}), document.body);
+	var Info = [
+	    {
+	        "col1": "台大",
+	        "col2": "中正",
+	        "col3": "02-23962340",
+	        "col4": "林巧翊主任",
+	        "col5": "972699132",
+	        "col6": "於臺北市醫院就醫之傷者家屬,若有相關問題,於晚上八點前可撥打社會局社工科電話 02-27206528"
+	    },
+	    {
+	        "col1": "中興",
+	        "col2": "大同",
+	        "col3": "02-25974280",
+	        "col4": "李恩琪",
+	        "col5": "972699126",
+	        "col6": "於臺北市醫院就醫之傷者家屬,若有相關問題,於晚上八點前可撥打社會局社工科電話 02-27206528"
+	    },
+	    {
+	        "col1": "台北馬偕",
+	        "col2": "中山",
+	        "col3": "02-25156223",
+	        "col4": "蔡淑婉主任",
+	        "col5": "972699122",
+	        "col6": "於臺北市醫院就醫之傷者家屬,若有相關問題,於晚上八點前可撥打社會局社工科電話 02-27206528"
+	    },
+	    {
+	        "col1": "三總松山分院",
+	        "col2": "松山",
+	        "col3": "02-27565018",
+	        "col4": "黃婉貞",
+	        "col5": "972699159",
+	        "col6": "於臺北市醫院就醫之傷者家屬,若有相關問題,於晚上八點前可撥打社會局社工科電話 02-27206528"
+	    },
+	    {
+	        "col1": "國泰、仁愛",
+	        "col2": "大安",
+	        "col3": "02-27000960",
+	        "col4": "張必宜",
+	        "col5": "972699146",
+	        "col6": "於臺北市醫院就醫之傷者家屬,若有相關問題,於晚上八點前可撥打社會局社工科電話 02-27206528"
+	    },
+	    {
+	        "col1": "",
+	        "col2": "萬華",
+	        "col3": "02-23365700",
+	        "col4": "邱慶雄",
+	        "col5": "972699137",
+	        "col6": "於臺北市醫院就醫之傷者家屬,若有相關問題,於晚上八點前可撥打社會局社工科電話 02-27206528"
+	    },
+	    {
+	        "col1": "臺北醫學院",
+	        "col2": "信義",
+	        "col3": "02-27616515",
+	        "col4": "蔡雅芬",
+	        "col5": "972699155",
+	        "col6": "於臺北市醫院就醫之傷者家屬,若有相關問題,於晚上八點前可撥打社會局社工科電話 02-27206528"
+	    },
+	    {
+	        "col1": "新光、陽明",
+	        "col2": "士林",
+	        "col3": "02-28350247",
+	        "col4": "許嘉倪",
+	        "col5": "972699177",
+	        "col6": "於臺北市醫院就醫之傷者家屬,若有相關問題,於晚上八點前可撥打社會局社工科電話 02-27206528"
+	    },
+	    {
+	        "col1": "台北榮總、振興",
+	        "col2": "北投",
+	        "col3": "02-28942640",
+	        "col4": "謝麗華",
+	        "col5": "972699183",
+	        "col6": "於臺北市醫院就醫之傷者家屬,若有相關問題,於晚上八點前可撥打社會局社工科電話 02-27206528"
+	    },
+	    {
+	        "col1": "內湖分院",
+	        "col2": "內湖",
+	        "col3": "02-27928701",
+	        "col4": "翁淑卿",
+	        "col5": "972699166",
+	        "col6": "於臺北市醫院就醫之傷者家屬,若有相關問題,於晚上八點前可撥打社會局社工科電話 02-27206528"
+	    },
+	    {
+	        "col1": "忠孝",
+	        "col2": "南港",
+	        "col3": "02-27831407",
+	        "col4": "蔡妙娟",
+	        "col5": "972699173",
+	        "col6": "於臺北市醫院就醫之傷者家屬,若有相關問題,於晚上八點前可撥打社會局社工科電話 02-27206528"
+	    },
+	    {
+	        "col1": "萬芳",
+	        "col2": "文山",
+	        "col3": "02-29323587",
+	        "col4": "魏英珠",
+	        "col5": "972187503",
+	        "col6": "於臺北市醫院就醫之傷者家屬,若有相關問題,於晚上八點前可撥打社會局社工科電話 02-27206528"
+	    }
+	];
 
+	React.render(React.createElement(FilterableProductTable, {products: Member, info: Info}), document.body);
 
 /***/ },
 /* 2 */
