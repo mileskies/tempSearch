@@ -65,6 +65,12 @@
 	    },
 	    title: {
 	        fontSize: "2em"
+	    },
+	    sub: {
+	        fontSize: "18px"
+	    },
+	    searchBar: {
+	        width: "100%"
 	    }
 	}
 
@@ -157,7 +163,8 @@
 	                    placeholder: "Search...", 
 	                    value: this.props.filterText, 
 	                    ref: "filterTextInput", 
-	                    onChange: this.handleChange}
+	                    onChange: this.handleChange, 
+	                    style: style.searchBar}
 	                )
 	            )
 	        );
@@ -181,6 +188,7 @@
 	        return (
 	            React.createElement("div", null, 
 	                React.createElement("div", {style: style.title}, "八仙氣爆案傷者送醫資料查詢"), 
+	                React.createElement("div", {style: style.sub}, "最後更新時間：2015/06/28 12:28，資料來源：北市府資訊局"), 
 	                React.createElement(SearchBar, {
 	                    filterText: this.state.filterText, 
 	                    onUserInput: this.handleUserInput}
