@@ -172,7 +172,7 @@
 	            React.createElement("form", null, 
 	                React.createElement("input", {
 	                    type: "text", 
-	                    placeholder: "Search...", 
+	                    placeholder: "輸入任何關鍵字搜尋..", 
 	                    value: this.props.filterText, 
 	                    ref: "filterTextInput", 
 	                    onChange: this.handleChange, 
