@@ -53,12 +53,6 @@
 
 	/** @jsx React.DOM */var React = __webpack_require__(2);
 
-	var ProductCategoryRow = React.createClass({displayName: "ProductCategoryRow",
-	    render: function() {
-	        return (React.createElement("tr", null, React.createElement("th", {colSpan: "2"}, this.props.category)));
-	    }
-	});
-
 	var style = {
 	    td: {
 	        padding: "10px 10px 1px 10px",
@@ -66,6 +60,14 @@
 	        textAlign: "center",
 	        borderBottom: "1px solid #d9d9d9",
 	        fontSize: "18px"
+	    },
+	    tdMark: {
+	        padding: "10px 10px 1px 10px",
+	        align: "center",
+	        textAlign: "center",
+	        borderBottom: "1px solid #d9d9d9",
+	        fontSize: "18px",
+	        background: "#DAEF56"
 	    },
 	    title: {
 	        fontSize: "2em",
@@ -91,20 +93,34 @@
 
 	var ProductRow = React.createClass({displayName: "ProductRow",
 	    render: function() {
+	        var match = this.props.match;
+	        var s1 = (match == 'id') ? style.tdMark : style.td;
+	        var s2 = (match == 'city') ? style.tdMark : style.td;
+	        var s3 = (match == 'unit') ? style.tdMark : style.td;
+	        var s4 = (match == 'name') ? style.tdMark : style.td;
+	        var s5 = (match == 'gender') ? style.tdMark : style.td;
+	        var s6 = (match == 'country') ? style.tdMark : style.td;
+	        var s7 = (match == 'age') ? style.tdMark : style.td;
+	        var s8 = (match == 'oth1') ? style.tdMark : style.td;
+	        var s9 = (match == 'oth2') ? style.tdMark : style.td;
+	        var s10 = (match == 'oth3') ? style.tdMark : style.td;
+	        var s11 = (match == 'oth4') ? style.tdMark : style.td;
+	        var s12 = (match == 'oth5') ? style.tdMark : style.td;
+
 	        return (
 	            React.createElement("tr", null, 
-	                React.createElement("td", {style: style.td}, this.props.product.id), 
-	                React.createElement("td", {style: style.td}, this.props.product.city), 
-	                React.createElement("td", {style: style.td}, this.props.product.unit), 
-	                React.createElement("td", {style: style.td}, this.props.product.name), 
-	                React.createElement("td", {style: style.td}, this.props.product.gender), 
-	                React.createElement("td", {style: style.td}, this.props.product.country), 
-	                React.createElement("td", {style: style.td}, this.props.product.age), 
-	                React.createElement("td", {style: style.td}, this.props.product.oth1), 
-	                React.createElement("td", {style: style.td}, this.props.product.oth2), 
-	                React.createElement("td", {style: style.td}, this.props.product.oth3), 
-	                React.createElement("td", {style: style.td}, this.props.product.oth4), 
-	                React.createElement("td", {style: style.td}, this.props.product.oth5)
+	                React.createElement("td", {style: s1}, this.props.product.id), 
+	                React.createElement("td", {style: s2}, this.props.product.city), 
+	                React.createElement("td", {style: s3}, this.props.product.unit), 
+	                React.createElement("td", {style: s4}, this.props.product.name), 
+	                React.createElement("td", {style: s5}, this.props.product.gender), 
+	                React.createElement("td", {style: s6}, this.props.product.country), 
+	                React.createElement("td", {style: s7}, this.props.product.age), 
+	                React.createElement("td", {style: s8}, this.props.product.oth1), 
+	                React.createElement("td", {style: s9}, this.props.product.oth2), 
+	                React.createElement("td", {style: s10}, this.props.product.oth3), 
+	                React.createElement("td", {style: s11}, this.props.product.oth4), 
+	                React.createElement("td", {style: s12}, this.props.product.oth5)
 	            )
 	        );
 	    }
@@ -150,8 +166,23 @@
 	                && product.oth5.indexOf(this.props.filterText) === -1
 	                ) {
 	                return;
-	            }            
-	            rows.push(React.createElement(ProductRow, {product: product, reactKey: product.name}));
+	            }
+
+	            var match = "";
+	            if (product.id.indexOf(this.props.filterText) !== -1 && this.props.filterText != '') match = "id";
+	            if (product.city.indexOf(this.props.filterText) !== -1 && this.props.filterText != '') match = "city";
+	            if (product.unit.indexOf(this.props.filterText) !== -1 && this.props.filterText != '') match = "unit";
+	            if (product.name.indexOf(name) !== -1 && this.props.filterText != '') match = "name";
+	            if (product.gender.indexOf(this.props.filterText) !== -1 && this.props.filterText != '') match = "gender";
+	            if (product.country.indexOf(this.props.filterText) !== -1 && this.props.filterText != '') match = "country";
+	            if (product.age.indexOf(this.props.filterText) !== -1 && this.props.filterText != '') match = "age";
+	            if (product.oth1.indexOf(this.props.filterText) !== -1 && this.props.filterText != '') match = "oth1";
+	            if (product.oth2.indexOf(this.props.filterText) !== -1 && this.props.filterText != '') match = "oth2";
+	            if (product.oth3.indexOf(this.props.filterText) !== -1 && this.props.filterText != '') match = "oth3";
+	            if (product.oth4.indexOf(this.props.filterText) !== -1 && this.props.filterText != '') match = "oth4";
+	            if (product.oth5.indexOf(this.props.filterText) !== -1 && this.props.filterText != '') match = "oth5";
+
+	            rows.push(React.createElement(ProductRow, {product: product, match: match, reactKey: product.name}));
 	        }.bind(this));
 
 	        rows = (rows.length != 0) ? rows : "查無資料";
