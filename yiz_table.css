@@ -1,0 +1,45 @@
+@charset "utf-8";
+
+#YiZ-Table {
+    border-collapse: collapse;    
+}
+#YiZ-Table td {
+    text-align: center;
+    padding: 10px;
+    font-size: 20px;
+}
+#YiZ-Table > thead > tr {
+    background-color: #34495E;
+}
+#YiZ-Table > thead > tr > td {
+    color: #FFF;
+    padding: 10px;
+    font-size: 24px;
+    font-weight: bold;
+}
+#YiZ-Table > thead > tr > td:first-child {
+    -webkit-border-top-left-radius: 4px;
+    -moz-border-radius-topleft: 4px;
+    border-top-left-radius: 4px;
+}
+#YiZ-Table > thead > tr > td:last-child {
+    -webkit-border-top-right-radius: 4px;
+    -moz-border-radius-topright: 4px;
+    border-top-right-radius: 4px;
+}
+#YiZ-Table > tbody > tr > td {
+    border-bottom: 1px solid #d9d9d9;
+}
+#YiZ-Table > tbody > tr:nth-of-type(even) {
+    background: #F8F8F8;
+}
+#YiZ-Table > tbody > tr:last-child > td {
+    border: 0;
+}
+#YiZ-Table > tbody > tr:hover {
+    background: #E1EFF2;
+}
+#YiZ-Table > tbody > tr > td:hover {
+    background: #424347;
+    color: #FFF;
+}
