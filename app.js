@@ -29899,7 +29899,7 @@
 					rows.push(
 						React.createElement("td", {style: style.match, key: key}, data)
 					);
-				} else if (ind == 4 && data.indexOf(text) > -1 && text) {
+				} else if (ind == "姓名" && data.indexOf(name) > -1 && text) {
 					match = true;
 					rows.push(
 						React.createElement("td", {style: style.match, key: key}, data)
